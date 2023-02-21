@@ -1,0 +1,117 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url(https://img.freepik.com/free-psd/abstract-background-design_1297-78.jpg?w=740&t=st=1676282243~exp=1676282843~hmac=2374a0180104e1567df5c8e9d03e5ad49b07489bf925a95b90c2a920d9f96c91);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+table tr td {
+    border-radius: 15px !important;
+    box-shadow: 0 0 13px red;
+    border: none !important;
+    border-radius: 20px;
+
+}
+
+.square {
+
+    width: 130px;
+    height: 130px;
+    border: 2px solid;
+}
+
+.help {
+
+    color: white;
+}
+
+#show,
+#show1 {
+    width: 8pc;
+    color: white;
+
+    height: 6pc !important;
+}
+
+h4 {
+    color: black;
+    text-shadow: 0 0 4px red;
+}
+
+.playername {
+    
+    height: 14pc;
+    border-radius: 10px;
+    width: 20pc;
+}
+
+@media (max-width:688px) {
+    
+body {
+    background-image: url(https://img.freepik.com/free-psd/abstract-background-design_1297-78.jpg?w=740&t=st=1676282243~exp=1676282843~hmac=2374a0180104e1567df5c8e9d03e5ad49b07489bf925a95b90c2a920d9f96c91);
+    background-repeat: no-repeat;
+    background-size:90pc;
+}
+    .space {
+        display: grid !important;
+        grid-template-columns: repeat(1, 1fr) !important;
+    }
+    /* #board{
+        width: 20pc !important;
+    } */
+
+
+
+    table tr td {
+        border-radius: 15px !important;
+        box-shadow: 0 0 13px red;
+        border: none !important;
+        border-radius: 20px;
+    
+    }
+    
+   
+    
+    .help {
+    
+        color: white;
+    }
+    
+    #show,
+    #show1 {
+
+        color: white;
+        width: 19pc;
+        height: 6pc !important;
+    }
+}
+@media (max-width:375px) {
+    .restartbtn{
+        margin-top: 2pc !important;
+        margin-left: 9pc !important;
+
+    }
+    table tr td{
+    border-radius: 15px !important;
+    box-shadow: 0 0 13px red;
+    border: none !important;
+    border-radius: 20px;
+
+}
+    #board{
+        margin-left: -13px !important;
+    }
+      
+    #show,
+    #show1 {
+
+        color: white;
+        width:186px;
+        height: 6pc !important;
+    }
+}

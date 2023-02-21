@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./cgpa.css">
+    <link rel="stylesheet" href="./bootstrap-5.2.2-dist/css/bootstrap.css">
+</head>
+
+<body>
+
+    <table class=" table table-striped text-center " id="myTable">
+
+    </table>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="class border border-1 shadow w-50 mx-auto mt-3">
+                <input type="text" class="form-control mt-3 mb-3" placeholder="Course" id="Course">
+                <input type="text" class="form-control mt-3 mb-3" placeholder="Course Unti" id="weatedPonit">
+                <input type="text" class="form-control mt-3 mb-3" placeholder="Course Score" id="currentPoint">
+                <button class="form-control bg-info" onclick="calculate()">Calculate Score</button>
+                <button class="form-control bg-info" onclick="cgPa()">Calculate cgpa</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let allArray = []
+        if (localStorage.localScore) {
+
+            allArray = JSON.parse(localStorage.getItem("localScore"))
+        }
+
+        const cgPa = () => {
+            let eachScore = {
+                course: Course.value,
+                weight: weatedPonit.value,
+                currents: currentPoint.value
+            }
+
+            allArray.push(eachScore)
+            localStorage.setItem("localScore", JSON.stringify(allArray))
+            console.log(allArray)
+            display()
+        }
+        
+
+      
+
+        const calculate = () => {
+            let studentScore = weatedPonit.value;
+            if (studentScore >= 0 && studentScore <= 39) {
+
+                alert("F")
+
+            }
+            else if (studentScore >= 40 && studentScore < 50) {
+                alert("D")
+            }
+            else if (studentScore >= 50 && studentScore <= 59) {
+                alert("C")
+            }
+            else if (studentScore >= 60 && studentScore <= 69) {
+                alert("BC")
+            }
+            else if (studentScore >= 70 && studentScore <= 79) {
+                alert("AB")
+            }
+            else if (studentScore >= 80 && studentScore <= 100) {
+                alert("A")
+            }
+            display()
+        }
+
+
+
+        const display = () => {
+         const  allArray = JSON.parse(localStorage.getItem("localScore"))
+               const view= JSON.parse( localStorage.getItem("view"))
+
+            myTable.innerHTML += `
+            <tr>
+                <th>S/N</th>
+                <th>Course</th>
+                <th>Course Unit</th>
+                <th>Course Score</th>
+                </tr>
+                `
+             currentOne=allArray[view].eachScore 
+            for (let index = 0;  currentOne.length; index++) {
+                console.log(allArray[index])
+
+        //    allArray.map((eachItem,i)=>{
+        //     console.log(eachItem)
+    
+                myTable.innerHTML = `
+        <tr>
+            <td>${index + 1}</td>
+            <td>${currentOne[index].Course}</d>
+                <td>${currentOne[index].weatedPonit}</td>
+                <td>${currentOne[index].currentPonit}</td>
+                
+                <th>
+                    `
+        
+        // })
+        
+    }
+    }
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./firstpage.css">
+    <link rel="stylesheet" href="./bootstrap-5.2.2-dist/css/bootstrap.css">
+</head>
+
+<body>
+    <div class="d-flex">
+        <div>    
+            <div class="round" ></div>
+            <div class="round1" ></div>
+            <div class="round2" ></div>
+            <div class="round12" ></div>
+        </div>
+        <div>
+            <div class="round3" ></div>
+            <div class="round13" ></div>
+            <div class="round4" ></div>
+            <div class="round14" ></div>
+        </div>
+    </div>
+    <div class="container ">
+        <div class="row ">
+            <h3 class="text-center mt-4 text-light">Register Name</h3>
+            <div class="contain   mx-auto ">
+                <h4 class="text-center">TIC-TAC-TOE GAME</h4>
+                <input class="mt-4 text-light mx-auto form-control" type="text" id="firstUser" placeholder="firstplayer">
+                <input class="mt-4 text-light mx-auto form-control" type="text" id="secondUser" placeholder="secondplayer">
+             <button class="form-control mb-3 mt-5  text-light" onclick="StartToPlay()">Start</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        allPlayer = []
+        if (localStorage.localPlayer) {
+            allPlayer = JSON.parse(localStorage.getItem("localPlayer"))
+
+        }
+        const StartToPlay = () => {
+            let totalPlay = {
+                firstplayer: firstUser.value,
+                secondplayer: secondUser.value,
+                
+            }
+            
+            if(!firstUser.value && !secondUser.value){
+                alert("Provide players name")
+           
+            }
+            else{
+                
+
+            
+            allPlayer.push(totalPlay)
+            localStorage.setItem("localPlayer", JSON.stringify(allPlayer))
+            console.log(allPlayer)
+            window.location.href="togame.html"
+            firstUser.value=""
+            secondUser.value=""
+            
+        }
+         }
+    
+
+    </script>
+</body>
+
+</html>

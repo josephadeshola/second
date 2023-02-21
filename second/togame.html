@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./bootstrap-5.2.2-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="contain">
+                <div class="d-flex space justify-content-between">
+                    <!-- <div id="disps" class="mx-auto"></div>
+                        <div id="disp" class="mx-auto"></div> -->
+                    <div class="apck">
+                        <h2 class="text-center" style="text-shadow: 2px 3px 6px red;">TIC-TAC-TOE Game</h2>
+                        <button onclick="playSong()" class="form-control w-50 mx-auto  text-light"
+                            style="background-color: black;border: none ;box-shadow: 0 0 6px red;">Play song</button>
+                        <button onclick="pauseSong()" class="form-control w-50 mx-auto mt-2  text-light"
+                            style="background-color: black;border: none ;box-shadow: 0 0 6px red;">Pause</button>
+                        <div id="board">
+                            <table class="mt-3 mx-auto " width="400px" height="400px">
+
+                                <tr>
+
+                                    <td class="square" onclick="test(event)" id="one"></td>
+                                    <td class="square" onclick="test(event)" id="two"></td>
+                                    <td class="square" onclick="test(event)" id="three"></td>
+                                </tr>
+                                <tr>
+                                    <td class="square" onclick="test(event)" id="four"></td>
+                                    <td class="square" onclick="test(event)" id="five"></td>
+                                    <td class="square" onclick="test(event)" id="six"></td>
+                                </tr>
+                                <tr>
+                                    <td class="square" onclick="test(event)" id="seven"></td>
+                                    <td class="square" onclick="test(event)" id="eight"></td>
+                                    <td class="square" onclick="test(event)" id="nine"></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="text-center text-info mt-3">
+                        <h4> Players Name</h4>
+                        <table class="d-flex">
+                            <tr>
+                                <td id="play1" class="help mx-auto " style="height: 2pc; border: 1px solid black;"></td>
+                                <td id="play2" class="help mx-auto " style="height: 2pc; border: 1px solid black;"></td>
+                            </tr>
+
+                            <tr>
+                                <td id="show" style="height: 2pc; font-size: 40px;font-weight: 700;">0</td>
+                                <td id="show1" style="height: 2pc; font-size: 40px;font-weight: 700;">0</td>
+                            </tr>
+                        </table>
+
+                        <div id="disp"></div>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    </div>
+    </div>
+    <button style="width: 8pc;background-color: black;" onclick="clearAll()"
+        class="form-control restartbtn  mx-auto mt-2  text-light"
+        style="background-color: black;border: none ;box-shadow: 0 0 6px red;">Restart</button>
+
+    <script>
+
+        let playMusic = new Audio('Yemi-Alade-Ft.-Iyanya-Olamide-Tekno-Selebobo-–-Mama-Oyoyo.mp3')
+        const playSong = () => {
+            playMusic.play()
+        }
+        const pauseSong = () => {
+            playMusic.pause()
+        }
+
+        let allPlayer = JSON.parse(localStorage.getItem("localPlayer"))
+        allPlayer.map((user, index) => {
+            play1.innerHTML = user.firstplayer
+            play2.innerHTML = user.secondplayer
+
+
+        })
+        let tic = "x"
+        const test = (e) => {
+            allPlayer.map((user, index) => {
+
+                if (e.target.innerText == '') {
+                    if (tic == "x") {
+                        e.target.innerHTML = "<div class='text-center' style='font-size:450%;font-weight:800 ;font-family: monospace; text-shadow:0 0 15px red;'>x</div>"
+                        tic = "o"
+                    }
+                    else if (tic == "o") {
+                        e.target.innerHTML = "<div class='text-center' style='font-size:450%;font-weight:800 ;font-family: monospace; text-shadow:0 0 15px red'>o</div>"
+                        tic = "x"
+                    }
+
+
+                    if (one.innerText == "x" && two.innerText == "x" && three.innerText == "x" || one.innerText == "o" && two.innerText == "o" && three.innerText == "o") {
+
+                        setTimeout(() => {
+
+                            one.innerHTML = ""
+                            two.innerHTML = ""
+                            three.innerHTML = ""
+                            four.innerHTML = ""
+                            five.innerHTML = ""
+                            six.innerHTML = ""
+                            seven.innerHTML = ""
+                            eight.innerHTML = ""
+                            one.style.backgroundColor = "transparent"
+                            two.style.backgroundColor = "transparent"
+                            three.style.backgroundColor = "transparent"
+
+
+                            nine.innerHTML = ""
+                        }, 1000)
+                    }
+                    if (one.innerText == "x" && two.innerText == "x" && three.innerText == "x") {
+                        disp.innerHTML = `<div class="mt-4" style='font-size:25px;color:white;font-family: monospace;'>${play1.innerHTML} Win ${play2.innerHTML} lose</div>`
+                        one.style.backgroundColor = "rgb(255, 51, 0)"
+                        two.style.backgroundColor = "rgb(255, 51, 0)"
+                        three.style.backgroundColor = "rgb(255, 51, 0)"
+                        show.innerHTML = Number(show.innerHTML) + 1
+                    }
+                    else if (one.innerText == "o" && two.innerText == "o" && three.innerText == "o") {
+                        disp.innerHTML = `<div class="mt-4" style='font-size:25px;color:white;font-family: monospace;'>${play2.innerHTML} Win ${play1.innerHTML} lose</div>`
+
+                        one.style.backgroundColor = "rgb(255, 51, 0)"
+                        two.style.backgroundColor = "rgb(255, 51, 0)"
+                        three.style.backgroundColor = "rgb(255, 51, 0)"
+                        show1.innerHTML = Number(show1.innerHTML) + 1
+                    }
+
+
+
+                    else if (four.innerText == "x" && five.innerText == "x" && six.innerText == "x" || four.innerText == "o" && five.innerText == "o" && six.innerText == "o") {
+
+                        setTimeout(() => {
+
+                            one.innerHTML = ""
+                            two.innerHTML = ""
+                            three.innerHTML = ""
+                            four.innerHTML = ""
+                            five.innerHTML = ""
+                            six.innerHTML = ""
+                            seven.innerHTML = ""
+                            eight.innerHTML = ""
+                            nine.innerHTML = ""
+                            four.style.backgroundColor = "transparent"
+                            five.style.backgroundColor = "transparent"
+                            six.style.backgroundColor = "transparent"
+                        }, 1000)
+                    }
+                    if (four.innerText == "x" && five.innerText == "x" && six.innerText == "x") {
+                        // alert("win")
+                        disp.innerHTML = `<div class="mt-4" style='font-size:25px;color:white;font-family: monospace;'>${play1.innerHTML} Win ${play2.innerHTML} lose</div>`
+                        four.style.backgroundColor = "rgb(255, 51, 0)"
+                        five.style.backgroundColor = "rgb(255, 51, 0)"
+                        six.style.backgroundColor = "rgb(255, 51, 0)"
+
+                        show.innerHTML = Number(show.innerHTML) + 1
+                    }
+                    else if (four.innerText == "o" && five.innerText == "o" && six.innerText == "o") {
+
+
+                        disp.innerHTML = `<div class="mt-4" style='font-size:25px;color:white;font-family: monospace;'>${play2.innerHTML} Win ${play1.innerHTML} lose</div>`
+                        four.style.backgroundColor = "rgb(255, 51, 0)"
+                        five.style.backgroundColor = "rgb(255, 51, 0)"
+                        six.style.backgroundColor = "rgb(255, 51, 0)"
+
+                        show1.innerHTML = Number(show1.innerHTML) + 1
+                    }
+
+
+                    else if (seven.innerText == "x" && eight.innerText == "x" && nine.innerText == "x" || seven.innerText == "o" && eight.innerText == "o" && nine.innerText == "o") {
+                        setTimeout((test) => {
+                            one.innerHTML = ""
+                            two.innerHTML = ""
+                            three.innerHTML = ""
+                            four.innerHTML = ""
+                            five.innerHTML = ""
+                            six.innerHTML = ""
+                            seven.innerHTML = ""
+                            eight.innerHTML = ""
+                            nine.innerHTML = ""
+                            seven.style.backgroundColor = "transparent"
+                            eight.style.backgroundColor = "transparent"
+                            nine.style.backgroundColor = "transparent"
+
+                        }, 1000)
+
+                        if (seven.innerText == "x" && eight.innerText == "x" && nine.innerText == "x") {
+                            disp.innerHTML = `<div class="mt-4" style='font-size:25px;color:white;font-family: monospace;'>${play1.innerHTML} Win ${play2.innerHTML} lose</div>`
+                            seven.style.backgroundColor = "rgb(255, 51, 0)"
+                            eight.style.backgroundColor = "rgb(255, 51, 0)"
+                            nine.style.backgroundColor = "rgb(255, 51, 0)"
+
+
+                            show.innerHTML = Number(show.innerHTML) + 1
+
+                        }
+                        else {
+
+                            disp.innerHTML = `<div class="mt-4" style='font-size:25px;color:white;font-family: monospace;'>${play2.innerHTML} Win ${play1.innerHTML} lose</div>`
+                            seven.style.backgroundColor = "rgb(255, 51, 0)"
+                            eight.style.backgroundColor = "rgb(255, 51, 0)"
+                            nine.style.backgroundColor = "rgb(255, 51, 0)"
+                            show1.innerHTML = Number(show1.innerHTML) + 1
+                        }
+                    }
+                    else if (one.innerText == "x" && five.innerText == "x" && nine.innerText == "x" || one.innerText == "o" && five.innerText == "o" && nine.innerText == "o") {
+                        setTimeout((test) => {
+                            // disp.innerHTML="win"
+                            one.innerHTML = ""
+                            two.innerHTML = ""
+                            three.innerHTML = ""
+                            four.innerHTML = ""
+                            five.innerHTML = ""
+                            six.innerHTML = ""
+                            seven.innerHTML = ""
+                            eight.innerHTML = ""
+                            nine.innerHTML = ""
+                            one.style.backgroundColor = "transparent"
+                            five.style.backgroundColor = "transparent"
+                            nine.style.backgroundColor = "transparent"
+
+
+                        }, 1000)
+                        if (one.innerText == "x" && five.innerText == "x" && nine.innerText == "x") {
+                            disp.innerHTML = `<div class="mt-4" style='font-size:25px;color:white;font-family: monospace;'>${play1.innerHTML} Win ${play2.innerHTML} lose</div>`
+                            one.style.backgroundColor = "rgb(255, 51, 0)"
+                            five.style.backgroundColor = "rgb(255, 51, 0)"
+                            nine.style.backgroundColor = "rgb(255, 51, 0)"
+
+                            show.innerHTML = Number(show.innerHTML) + 1
+
+                        }
+                        else {
+
+                            disp.innerHTML = `<div class="mt-4" style='font-size:25px;color:white;   font-family: monospace;'>${play2.innerHTML} Win ${play1.innerHTML} lose</div>`
+                            one.style.backgroundColor = "rgb(255, 51, 0)"
+                            five.style.backgroundColor = "rgb(255, 51, 0)"
+                            nine.style.backgroundColor = "rgb(255, 51, 0)"
+
+                            show1.innerHTML = Number(show1.innerHTML) + 1
+                        }
+                    }
+                    else if (three.innerText == "x" && five.innerText == "x" && seven.innerText == "x" || three.innerText == "o" && five.innerText == "o" && seven.innerText == "o") {
+                        setTimeout((test) => {
+                            // disp.innerHTML="win"
+                            one.innerHTML = ""
+                            two.innerHTML = ""
+                            three.innerHTML = ""
+                            four.innerHTML = ""
+                            five.innerHTML = ""
+                            six.innerHTML = ""
+                            seven.innerHTML = ""
+                            eight.innerHTML = ""
+                            nine.innerHTML = ""
+                            three.style.backgroundColor = "transparent"
+                            five.style.backgroundColor = "transparent"
+                            seven.style.backgroundColor = "transparent"
+                        }, 1000)
+                        if (three.innerText == "x" && five.innerText == "x" && seven.innerText == "x") {
+                            disp.innerHTML = `<div class="mt-4" style='font-size:25px;color:white;font-family: monospace;'>${play1.innerHTML} Win ${play2.innerHTML} lose</div>`
+                            three.style.backgroundColor = "rgb(255, 51, 0)"
+                            five.style.backgroundColor = "rgb(255, 51, 0)"
+                            seven.style.backgroundColor = "rgb(255, 51, 0)"
+
+                            show.innerHTML = Number(show.innerHTML) + 1
+
+                        } else {
+
+
+
+                            disp.innerHTML = `<div class="mt-4" style='font-size:25px;color:white;font-family: monospace;'>${play2.innerHTML} Win ${play1.innerHTML} lose</div>`
+                            three.style.backgroundColor = "rgb(255, 51, 0)"
+                            five.style.backgroundColor = "rgb(255, 51, 0)"
+                            seven.style.backgroundColor = "rgb(255, 51, 0)"
+
+                            show1.innerHTML = Number(show1.innerHTML) + 1
+                        }
+                    }
+
+                    else if (one.innerText == "x" && four.innerText == "x" && seven.innerText == "x" || one.innerText == "o" && four.innerText == "o" && seven.innerText == "o") {
+                        setTimeout((test) => {
+                            // disp.innerHTML = "win"
+                            one.innerHTML = ""
+                            two.innerHTML = ""
+                            three.innerHTML = ""
+                            four.innerHTML = ""
+                            five.innerHTML = ""
+                            six.innerHTML = ""
+                            seven.innerHTML = ""
+                            eight.innerHTML = ""
+                            nine.innerHTML = ""
+                            one.style.backgroundColor = "transparent"
+                            four.style.backgroundColor = "transparent"
+                            seven.style.backgroundColor = "transparent"
+                        }, 1000)
+                        if (one.innerText == "x" && four.innerText == "x" && seven.innerText == "x") {
+                            disp.innerHTML = `<div class="mt-4" style='font-size:25px;color:white;font-family: monospace;'>${play1.innerHTML} Win ${play2.innerHTML} lose</div>`
+                            one.style.backgroundColor = "rgb(255, 51, 0)"
+                            four.style.backgroundColor = "rgb(255, 51, 0)"
+                            seven.style.backgroundColor = "rgb(255, 51, 0)"
+                            show.innerHTML = Number(show.innerHTML) + 1
+
+
+                        }
+                        else {
+
+
+                            disp.innerHTML = `<div class="mt-4" style='font-size:25px;color:white;font-family: monospace;color:'>${play2.innerHTML} Win ${play1.innerHTML} lose</div>`
+                            one.style.backgroundColor = "rgb(255, 51, 0)"
+                            four.style.backgroundColor = "rgb(255, 51, 0)"
+                            seven.style.backgroundColor = "rgb(255, 51, 0)"
+                            show1.innerHTML = Number(show1.innerHTML) + 1
+                        }
+                    }
+                    else if (two.innerText == "x" && five.innerText == "x" && eight.innerText == "x" || two.innerText == "o" && five.innerText == "o" && eight.innerText == "o") {
+                        setTimeout((test) => {
+                            // disp.innerHTML = "win"
+                            one.innerHTML = ""
+                            two.innerHTML = ""
+                            three.innerHTML = ""
+                            four.innerHTML = ""
+                            five.innerHTML = ""
+                            six.innerHTML = ""
+                            seven.innerHTML = ""
+                            eight.innerHTML = ""
+                            nine.innerHTML = ""
+                            two.style.backgroundColor = "transparent"
+                            five.style.backgroundColor = "transparent"
+                            eight.style.backgroundColor = "transparent"
+
+                        }, 1000)
+                        if (two.innerText == "x" && five.innerText == "x" && eight.innerText == "x") {
+                            disp.innerHTML = `<div class="mt-4" style='font-size:25px;color:white;font-family: monospace;'>${play1.innerHTML} Win ${play2.innerHTML} lose</div>`
+                            two.style.backgroundColor = "rgb(255, 51, 0)"
+                            five.style.backgroundColor = "rgb(255, 51, 0)"
+                            eight.style.backgroundColor = "rgb(255, 51, 0)"
+                            show.innerHTML = Number(show.innerHTML) + 1
+
+
+                        }
+                        else {
+
+                            disp.innerHTML = `<div class="mt-4" style='font-size:25px;color:white;font-family: monospace;'>${play2.innerHTML} Win ${play1.innerHTML} lose</div>`
+                            two.style.backgroundColor = "rgb(255, 51, 0)"
+                            five.style.backgroundColor = "rgb(255, 51, 0)"
+                            eight.style.backgroundColor = "rgb(255, 51, 0)"
+                            show1.innerHTML = Number(show1.innerHTML) + 1
+                        }
+                    }
+                    else if (three.innerText == "x" && six.innerText == "x" && nine.innerText == "x" || three.innerText == "o" && six.innerText == "o" && nine.innerText == "o") {
+                        setTimeout((test) => {
+                            // disp.innerHTML = "win"
+                            one.innerHTML = ""
+                            two.innerHTML = ""
+                            three.innerHTML = ""
+                            four.innerHTML = ""
+                            five.innerHTML = ""
+                            six.innerHTML = ""
+                            seven.innerHTML = ""
+                            eight.innerHTML = ""
+                            nine.innerHTML = ""
+                            three.style.backgroundColor = "transparent"
+                            six.style.backgroundColor = "transparent"
+                            nine.style.backgroundColor = "transparent"
+
+                        }, 1000)
+                        if (three.innerText == "x" && six.innerText == "x" && nine.innerText == "x") {
+                            disp.innerHTML = `<div class="mt-4" style='font-size:25px;color:white;font-family: monospace;'>${play1.innerHTML} Win ${play2.innerHTML} lose</div>`
+                            three.style.backgroundColor = "rgb(255, 51, 0)"
+                            six.style.backgroundColor = "rgb(255, 51, 0)"
+                            nine.style.backgroundColor = "rgb(255, 51, 0)"
+                            show.innerHTML = Number(show.innerHTML) + 1
+
+                        }
+                        else {
+
+                            disp.innerHTML = `<div class="mt-4" style='font-size:25px;color:white;font-family: monospace;'>${play2.innerHTML} Win ${play1.innerHTML} lose</div>`
+                            three.style.backgroundColor = "rgb(255, 51, 0)"
+                            six.style.backgroundColor = "rgb(255, 51, 0)"
+                            nine.style.backgroundColor = "rgb(255, 51, 0)"
+                            show1.innerHTML = Number(show1.innerHTML) + 1
+                        }
+                    }
+                }
+            })
+        }
+
+        const clearAll = () => {
+            one.innerHTML = ""
+            two.innerHTML = ""
+            three.innerHTML = ""
+            four.innerHTML = ""
+            five.innerHTML = ""
+            six.innerHTML = ""
+            seven.innerHTML = ""
+            eight.innerHTML = ""
+            nine.innerHTML = ""
+        }
+
+
+
+    </script>
+
+</body>
+
+</html>

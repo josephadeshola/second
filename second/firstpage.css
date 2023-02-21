@@ -1,0 +1,227 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url(./liquid-marbling-paint-texture-background-fluid-painting-abstract-texture-intensive-color-mix-wallpaper.jpg) !important;
+}
+
+.contain {
+    box-shadow: 0 0 10px white !important;
+    width: 28pc !important;
+    height: 16pc;
+}
+
+button {
+    background-color: rgb(177, 11, 11) !important;
+}
+input{
+    
+    background-color: black !important;
+}
+
+.round {
+    border: 4px solid;
+    box-shadow: 0 0 6px red !important;
+    height: 10pc;
+    width: 10pc;
+    top: 3pc;
+    position: absolute;
+    border-radius: 30pc;
+    animation-name: round;
+
+    animation-duration: 3s;
+    animation-timing-function: ease-out;
+    animation-delay: 2s;
+    animation-iteration-count: infinite;
+    /* animation-iteration-count: 3; */
+    animation-direction: alternate;
+
+
+}
+
+@keyframes round {
+
+    10% {
+        transform: rotatey(0);
+       
+    }
+
+    100% {
+        transform: rotatey(360deg);
+      
+    }
+}
+
+.round3 {
+    border: 4px solid;
+    box-shadow: 0 0 6px rgb(231, 8, 8) !important;
+    height: 10pc;
+    top: 3pc;
+    left: 69pc;
+    top: 26pc;
+    width: 10pc;
+    position: absolute;
+    border-radius: 30pc;
+    animation-name: round3;
+    animation-duration: 3s;
+    animation-timing-function: ease-out;
+    animation-delay: 2s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+.round4 {
+    border: 4px solid;
+    box-shadow: 0 0 6px rgb(231, 8, 8) !important;
+    height: 10pc;
+    top: 3pc;
+    left: 62pc;
+    top: 26pc;
+    width: 10pc;
+    position: absolute;
+    border-radius: 30pc;
+    animation-name: round3;
+    animation-duration: 3s;
+    animation-timing-function: ease-out;
+    animation-delay: 2s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+.round14 {
+    border: 4px solid;
+    box-shadow: 0 0 6px rgb(231, 8, 8) !important;
+    height: 10pc;
+    top: 3pc;
+    left: 62pc;
+    top: 26pc;
+    width: 10pc;
+    position: absolute;
+    border-radius: 30pc;
+    /* animation-name: round3; */
+    animation-duration: 3s;
+    animation-timing-function: ease-out;
+    animation-delay: 2s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+.round13 {
+    border: 4px solid;
+    box-shadow: 0 0 6px rgb(231, 8, 8) !important;
+    height: 10pc;
+    left: 69pc;
+    top: 26pc;
+    width: 10pc;
+    position: absolute;
+    border-radius: 30pc;
+    animation-name: round4;
+    animation-duration: 3s;
+    animation-timing-function: ease-out;
+    animation-delay: 2s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+.round2 {
+    border: 4px solid;
+    box-shadow: 0 0 6px red !important;
+    height: 10pc;
+    left: 7pc;
+    top: 3pc;
+    width: 10pc;
+    position: absolute;
+    border-radius: 30pc;
+    animation-name: round2;
+    animation-duration: 3s;
+    animation-timing-function: ease-out;
+    animation-delay: 2s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+.round12 {
+    border: 4px solid;
+    box-shadow: 0 0 6px red !important;
+    height: 10pc;
+    width: 10pc;
+    top: 3pc;
+    position: absolute;
+    border-radius: 30pc;
+    animation-duration: 3s;
+    animation-timing-function: ease-out;
+    animation-delay: 2s;
+    animation-iteration-count: infinite;
+    /* animation-iteration-count: 3; */
+    animation-direction: alternate;
+}
+
+.round1 {
+    border: 4px solid;
+    box-shadow: 0 0 6px red !important;
+    height: 10pc;
+    left: 7pc;
+    top: 3pc;
+    width: 10pc;
+    position: absolute;
+    border-radius: 30pc;
+    animation-duration: 3s;
+    animation-timing-function: ease-out;
+    animation-delay: 2s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+@keyframes round2 {
+
+    10% {
+        transform: rotatey(0);
+        /* transform-origin:left; */
+    }
+
+    100% {
+        transform: rotatey(360deg);
+        /* transform-origin:left; */
+    }
+}
+
+@keyframes round3 {
+
+    10% {
+        transform: rotatey(0);
+        /* transform-origin:left; */
+    }
+
+    100% {
+        transform: rotatey(360deg);
+        /* transform-origin:left; */
+    }
+}
+
+@media (max-width:688px) {
+
+    .round,
+    .round1,
+    .round12,
+    .round13,
+    .round14,
+    .round2,
+    .round4,
+    .round3 {
+        display: none;
+    }
+    input{
+        background-color: black !important;
+    }
+    .contain{
+      
+        margin-top: 10pc !important;
+    }
+   /* .text-ligh{
+        margin-top: 20pc !important;
+    } */
+
+}
